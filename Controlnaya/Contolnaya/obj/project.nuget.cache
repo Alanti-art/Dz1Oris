@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "Hm+QMWtHUvQ=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Lakhn\\OneDrive\\Рабочий стол\\MyHttpServer_variant14\\MyHttpServer\\MyHttpServer.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Lakhn\\.nuget\\packages\\bouncycastle.cryptography\\2.7.0\\bouncycastle.cryptography.2.7.0.nupkg.sha512",
+    "C:\\Users\\Lakhn\\.nuget\\packages\\htmlagilitypack\\1.13.1\\htmlagilitypack.1.13.1.nupkg.sha512",
+    "C:\\Users\\Lakhn\\.nuget\\packages\\mailkit\\4.18.1\\mailkit.4.18.1.nupkg.sha512",
+    "C:\\Users\\Lakhn\\.nuget\\packages\\microsoft.bcl.cryptography\\10.0.0\\microsoft.bcl.cryptography.10.0.0.nupkg.sha512",
+    "C:\\Users\\Lakhn\\.nuget\\packages\\mimekit\\4.18.1\\mimekit.4.18.1.nupkg.sha512",
+    "C:\\Users\\Lakhn\\.nuget\\packages\\system.formats.asn1\\10.0.0\\system.formats.asn1.10.0.0.nupkg.sha512",
+    "C:\\Users\\Lakhn\\.nuget\\packages\\system.security.cryptography.pkcs\\10.0.0\\system.security.cryptography.pkcs.10.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
