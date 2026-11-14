@@ -1,0 +1,17 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MyHttpServer
+{
+    public class Settings
+    {
+
+        public string Host { get; set; } /*= "127.0.0.1";*/
+        public string Port { get; set; } /*= "8888";*/
+       public string Path { get; set; }  /*= "connection";*/
+
+    }
+}
