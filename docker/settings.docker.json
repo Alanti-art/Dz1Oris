@@ -1,6 +1,0 @@
-{
-  "Host": "+",
-  "Port": "8888",
-  "Path": "",
-  "ConnectionString": "Server=db,1433;Database=CardGame;User Id=sa;Password=YourStrong!Passw0rd;Encrypt=False;TrustServerCertificate=True;Connection Timeout=30;"
-}
