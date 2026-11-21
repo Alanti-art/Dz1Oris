@@ -1,0 +1,415 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Карточки — Переворот</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 18px;
+            line-height: 1.5;
+            background: #070F08;
+            color: #B6A8A2;
+        }
+
+            body::before {
+                content: "";
+                position: fixed;
+                inset: -40px;
+                z-index: -1;
+                background: url("https://filgroup.ru/wp-content/uploads/2024/07/22.-Perevorot.webp") center / cover;
+                filter: blur(14px) brightness(0.3);
+            }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .page {
+            max-width: 760px;
+            min-height: 100vh;
+            margin: 0 auto;
+            background: #090c0c;
+        }
+
+        .header {
+            padding: 14px 28px;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #7A4A3C;
+        }
+
+        .logo {
+            color: #D8CCC6;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .navigation a {
+            margin-left: 20px;
+        }
+
+        .navigation .login-link {
+            padding: 4px 12px;
+            border: 1px solid #7A4A3C;
+            border-radius: 999px;
+        }
+
+        .container {
+            padding: 20px 28px 50px;
+        }
+
+        .intro {
+            margin: 30px 0;
+            text-align: center;
+        }
+
+            .intro h1 {
+                margin: 0;
+                color: #D8CCC6;
+                font-size: 54px;
+            }
+
+        .admin-actions {
+            margin-top: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            margin: 0 5px;
+            padding: 8px 18px;
+            color: #D8CCC6;
+            font-weight: bold;
+            border: 1px solid #D8CCC6;
+            border-radius: 999px;
+        }
+
+            .btn:hover {
+                color: #090c0c;
+                background: #D8CCC6;
+            }
+
+        .block {
+            margin-top: 50px;
+        }
+
+        .block-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 0 0 22px;
+            color: #D8CCC6;
+            font-size: 24px;
+        }
+
+            .block-title::after {
+                content: "";
+                flex: 1;
+                border-top: 2px dotted #7A4A3C;
+            }
+
+
+        .search-wrapper {
+            margin-bottom: 28px;
+        }
+
+        .character-search {
+            width: 100%;
+            padding: 12px 18px;
+            font-family: inherit;
+            font-size: 19px;
+            color: #D8CCC6;
+            background: #070F08;
+            border: 1px solid #7A4A3C;
+            border-radius: 999px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+            .character-search:focus {
+                border-color: #D8CCC6;
+            }
+
+            .character-search::placeholder {
+                color: #8b7c76;
+            }
+
+        /* Карточки */
+
+        .characters {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .character {
+            display: block;
+            overflow: hidden;
+            border: 1px solid #7A4A3C;
+            border-radius: 80px 80px 14px 14px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+            .character:hover {
+                transform: translateY(-4px);
+                border-color: #D8CCC6;
+            }
+
+        .character-image {
+            display: block;
+            width: 100%;
+            height: 290px;
+            object-fit: cover;
+            border-bottom: 1px solid #7A4A3C;
+        }
+
+        .character-info {
+            padding: 14px;
+        }
+
+        .character-title {
+            margin: 0;
+            color: #D8CCC6;
+            font-size: 26px;
+        }
+
+        .character-text {
+            margin: 5px 0 0;
+        }
+
+        .empty-message {
+            grid-column: 1 / -1;
+            padding: 30px 10px;
+            text-align: center;
+            color: #B6A8A2;
+            font-size: 22px;
+        }
+
+        .footer {
+            padding: 26px 28px;
+            border-top: 1px solid #7A4A3C;
+            font-size: 15px;
+            text-align: center;
+        }
+
+            .footer a {
+                color: #D8CCC6;
+            }
+
+        @media (max-width: 600px) {
+            .header {
+                flex-direction: column;
+                align-items: center;
+                gap: 12px;
+            }
+
+            .navigation a {
+                margin: 0 7px;
+            }
+
+            .container {
+                padding: 20px 16px 40px;
+            }
+
+            .intro h1 {
+                font-size: 42px;
+            }
+
+            .characters {
+                grid-template-columns: 1fr;
+            }
+
+            .character-image {
+                height: 320px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+
+ 
+
+        <div class="header">
+            <a class="logo" href="/">♛ Переворот</a>
+
+            <div class="navigation">
+                <a href="/#rules">Правила</a>
+                <a href="/characters/list">Карточки</a>
+                <a class="login-link" href="/auth/login">Войти</a>
+            </div>
+        </div>
+
+        <div class="container">
+
+        
+
+            <div class="intro">
+                <h1>Карточки</h1>
+                <p>Нажмите на персонажа, чтобы прочитать его описание.</p>
+
+                $if (${IsAuthenticated})
+                <div class="admin-actions">
+                    <a class="btn" href="/characters/new">+ Добавить карточку</a>
+                    <a class="btn" href="/characters/manage">Редактировать карточки</a>
+                </div>
+                $endif
+            </div>
+
+
+            <div class="block">
+
+                <h2 class="block-title">Персонажи</h2>
+
+
+                <div class="search-wrapper">
+                    <input type="text"
+                           id="characterSearch"
+                           class="character-search"
+                           placeholder="Поиск персонажа по имени..."
+                           autocomplete="off">
+                </div>
+
+               
+
+                <div class="characters" id="charactersContainer">
+
+                    $foreach(character in Characters)
+
+                    <a class="character" href="/characters/card?id=${character.Id}">
+
+                        <img class="character-image"
+                             src="${character.Image}"
+                             alt="${character.Name}">
+
+                        <div class="character-info">
+                            <h2 class="character-title">${character.Name}</h2>
+                            <p class="character-text">${character.Description}</p>
+                        </div>
+
+                    </a>
+
+                    $endforeach
+
+                </div>
+            </div>
+
+        </div>
+
+
+
+        <div class="footer">
+            <div>♛ Переворот — неофициальная страница настольной игры.</div>
+            <a href="/">Вернуться к правилам ↑</a>
+        </div>
+
+    </div>
+
+
+
+    <script>
+        const searchInput = document.getElementById("characterSearch");
+        const charactersContainer = document.getElementById("charactersContainer");
+
+        let searchTimer;
+        let latestRequest = 0;
+
+        searchInput.addEventListener("input", function () {
+            clearTimeout(searchTimer);
+
+            searchTimer = setTimeout(searchCharacters, 250);
+        });
+
+        async function searchCharacters() {
+            const name = searchInput.value.trim();
+            const requestId = ++latestRequest;
+
+            try {
+                const response = await fetch(
+                    "/characters/search?name=" + encodeURIComponent(name)
+                );
+
+                if (!response.ok) {
+                    throw new Error("Ошибка поиска: " + response.status);
+                }
+
+                const data = await response.json();
+
+               
+
+                if (requestId !== latestRequest) {
+                    return;
+                }
+
+                renderCharacters(data.Characters);
+            }
+            catch (error) {
+                console.error("Ошибка AJAX-поиска:", error);
+            }
+        }
+
+        function renderCharacters(characters) {
+            charactersContainer.replaceChildren();
+
+            if (!characters || characters.length === 0) {
+                const message = document.createElement("p");
+
+                message.className = "empty-message";
+                message.textContent = "Персонажи не найдены.";
+
+                charactersContainer.appendChild(message);
+                return;
+            }
+
+            characters.forEach(character => {
+
+                const card = document.createElement("a");
+
+                card.className = "character";
+                card.href = "/characters/card?id=" +
+                    encodeURIComponent(character.Id);
+
+                const image = document.createElement("img");
+
+                image.className = "character-image";
+                image.alt = character.Name || "";
+
+                if (character.Image) {
+                    image.src = character.Image;
+                }
+
+                const info = document.createElement("div");
+                info.className = "character-info";
+
+                const title = document.createElement("h2");
+
+                title.className = "character-title";
+                title.textContent = character.Name || "";
+
+                const description = document.createElement("p");
+
+                description.className = "character-text";
+                description.textContent = character.Description || "";
+
+                info.append(title, description);
+                card.append(image, info);
+
+                charactersContainer.appendChild(card);
+            });
+        }
+    </script>
+
+</body>
+</html>

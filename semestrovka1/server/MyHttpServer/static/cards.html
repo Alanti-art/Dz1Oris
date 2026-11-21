@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Управление карточками — Переворот</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 18px;
+            line-height: 1.5;
+            background: #070F08;
+            color: #B6A8A2;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .page {
+            width: 900px;
+            max-width: 100%;
+            min-height: 100vh;
+            margin: 0 auto;
+            background: #090c0c;
+        }
+
+        .header {
+            padding: 14px 28px;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #7A4A3C;
+        }
+
+        .logo {
+            color: #D8CCC6;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .navigation a {
+            margin-left: 20px;
+        }
+
+        .navigation form {
+            display: inline;
+            margin-left: 20px;
+        }
+
+        .logout-button {
+            padding: 0;
+            color: inherit;
+            font: inherit;
+            cursor: pointer;
+            background: none;
+            border: 0;
+        }
+
+        .logout-button:hover {
+            color: #D8CCC6;
+        }
+
+            .navigation a:hover {
+                color: #D8CCC6;
+            }
+
+        .container {
+            padding: 30px 28px 50px;
+        }
+
+        h1 {
+            margin: 0;
+            color: #D8CCC6;
+            font-size: 38px;
+        }
+
+        .intro {
+            margin: 5px 0 22px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 8px 20px;
+            color: #D8CCC6;
+            font: inherit;
+            font-weight: bold;
+            cursor: pointer;
+            background: transparent;
+            border: 1px solid #D8CCC6;
+            border-radius: 999px;
+        }
+
+            .btn:hover {
+                color: #090c0c;
+                background: #D8CCC6;
+            }
+
+        .btn-delete {
+            border-color: #7A4A3C;
+        }
+
+        .cards {
+            margin-top: 30px;
+        }
+
+        .card-row {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            margin-top: 14px;
+            padding: 12px;
+            border: 1px solid #7A4A3C;
+            border-radius: 10px;
+        }
+
+        .card-image {
+            width: 62px;
+            height: 88px;
+            object-fit: cover;
+            border: 1px solid #7A4A3C;
+            border-radius: 8px;
+        }
+
+        .card-info {
+            flex: 1;
+        }
+
+        .card-name {
+            margin: 0;
+            color: #D8CCC6;
+            font-size: 24px;
+        }
+
+        .card-description {
+            margin: 2px 0 0;
+            font-size: 16px;
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+            .card-actions form {
+                margin: 0;
+            }
+
+        .footer {
+            padding: 26px 28px;
+            border-top: 1px solid #7A4A3C;
+            font-size: 15px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="header">
+            <a class="logo" href="/">♛ Переворот</a>
+            <div class="navigation">
+                <a href="/characters/manage">Карточки</a>
+                <form action="/auth/logout" method="post">
+                    <button class="logout-button" type="submit">Выйти</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="container">
+            <h1>Управление карточками</h1>
+            <p class="intro">Всего карточек: ${CardsCount}</p>
+            <a class="btn" href="/characters/new">+ Добавить карточку</a>
+
+            <div class="cards">
+                $foreach(card in Cards)
+                <div class="card-row">
+                    <img class="card-image" src="${card.Image}" alt="${card.Name}">
+                    <div class="card-info">
+                        <h2 class="card-name">${card.Name}</h2>
+                        <p class="card-description">${card.Description}</p>
+                    </div>
+                    <div class="card-actions">
+                        <a class="btn" href="/characters/edit?id=${card.Id}">Изменить</a>
+                        <form action="/characters/delete" method="post">
+                            <input type="hidden" name="id" value="${card.Id}">
+                            <button class="btn btn-delete" type="submit">Удалить</button>
+                        </form>
+                    </div>
+                </div>
+                $endforeach
+            </div>
+        </div>
+
+        <div class="footer">♛ Админ-панель игры «Переворот»</div>
+    </div>
+</body>
+</html>

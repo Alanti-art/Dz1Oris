@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 — Переворот</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 18px;
+            line-height: 1.5;
+            background: #070F08;
+            color: #B6A8A2;
+        }
+
+            body::before {
+                content: "";
+                position: fixed;
+                inset: -40px;
+                z-index: -1;
+                background: url("https://filgroup.ru/wp-content/uploads/2024/07/22.-Perevorot.webp") center / cover;
+                filter: blur(14px) brightness(0.3);
+            }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .page {
+            max-width: 760px;
+            min-height: 100vh;
+            margin: 0 auto;
+            background: #090c0c;
+        }
+
+        .header {
+            padding: 14px 28px;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #7A4A3C;
+        }
+
+        .logo {
+            color: #D8CCC6;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .navigation a {
+            margin-left: 20px;
+        }
+
+            .navigation a:hover {
+                color: #D8CCC6;
+            }
+
+        .container {
+            padding: 20px 28px 50px;
+        }
+
+        .block {
+            margin-top: 50px;
+        }
+
+        .block-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 0 0 22px;
+            color: #D8CCC6;
+            font-size: 24px;
+        }
+
+            .block-title::after {
+                content: "";
+                flex: 1;
+                border-top: 2px dotted #7A4A3C;
+            }
+
+        .footer {
+            padding: 26px 28px;
+            border-top: 1px solid #7A4A3C;
+            font-size: 15px;
+            text-align: center;
+        }
+
+            .footer a {
+                color: #D8CCC6;
+            }
+
+
+        .error {
+            padding: 80px 28px;
+            text-align: center;
+        }
+
+        .error-code {
+            margin: 0;
+            color: #D8CCC6;
+            font-size: 130px;
+            line-height: 1;
+        }
+
+        .error-title {
+            margin: 12px 0;
+            color: #D8CCC6;
+            font-size: 32px;
+        }
+
+        .error-text {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .btn {
+            display: inline-block;
+            margin: 25px 6px 0;
+            padding: 8px 26px;
+            border: 1px solid #D8CCC6;
+            border-radius: 999px;
+            color: #D8CCC6;
+            font-weight: bold;
+        }
+
+            .btn:hover {
+                color: #090c0c;
+                background: #D8CCC6;
+            }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="header">
+            <a class="logo" href="index.html">♛ Переворот</a>
+            <div class="navigation">
+                <a href="index.html#rules">Правила</a>
+                <a href="/characters/list">Карточки</a>
+            </div>
+        </div>
+
+        <div class="error">
+            <h1 class="error-code">404</h1>
+            <h2 class="error-title">Страница не найдена</h2>
+            <p class="error-text">Такой страницы нет. Проверьте ссылку или вернитесь на главную страницу.</p>
+            <a class="btn" href="index.html">На главную</a>
+            <a class="btn" href="/characters/list">К карточкам</a>
+        </div>
+
+        <div class="footer">♛ Переворот — неофициальная страница настольной игры.</div>
+    </div>
+
+</body>
+</html>
