@@ -1,0 +1,1 @@
+﻿SELECT COLUMNPROPERTY(OBJECT_ID('Users'), 'Id', 'IsIdentity')
