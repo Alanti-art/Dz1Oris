@@ -22,7 +22,7 @@ namespace CustomHttpServer.Controllers
 
         [Post("login")]
        
-        public void login([QueryData] string login, [QueryData] string password)
+        public void login([FormData] string login, [FormData] string password)
         {
             Console.WriteLine($"Получен login: {login}; пароль {password}.");
         }
