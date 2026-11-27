@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace MyHttpServer.frameworks.Аttributes
 {
-    public class QueryDataAttribute : Attribute
+    public class FormDataAttribute : Attribute
     {
         public string? Name { get; }
 
-        public QueryDataAttribute() { }
-        public QueryDataAttribute(string name)
+        public FormDataAttribute() { }
+        public FormDataAttribute(string name)
         {
             Name = name;
         }
