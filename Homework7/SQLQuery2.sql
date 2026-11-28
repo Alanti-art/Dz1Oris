@@ -1,2 +1,0 @@
-﻿USE OrisDb;
-SELECT DB_NAME(), COUNT(*) FROM Users
