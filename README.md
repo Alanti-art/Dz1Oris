@@ -6,3 +6,4 @@
 - HomeWork_5 — HttpListener. Практика 3–4 (Отправка сообщения на почту)
 - HomeWork_6 — HttpListener. Практика 5 (Библиотека HtmlTemplater)
 - HomeWork_7 — HttpListener. Практика 6–7 (Библиотека ORM)
+- HomeWork_8 — HttpListener. Практика 8 (Работа с Cookie)
